@@ -246,7 +246,7 @@
                 casada: '',
                 igreja: '',
                 igreja_nome: '',
-                formSubmitted: true,
+                formSubmitted: false,
             }
         },
         methods: {
