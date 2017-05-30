@@ -193,6 +193,8 @@
                                 </tbody>
                             </table>
                             <br/>
+                            <p><strong>Abertura:</strong><span class="text-danger"> 15:00 hs</span> - <strong>Início das atividades:</strong><span class="text-danger"> 16:00 hs</span></p>
+                            <br/>
                             <p><strong>Atenção:</strong><span class="text-danger"> Não haverá ministério de crianças.</span></p>
                             <hr>
                         </div>
@@ -244,7 +246,7 @@
                 casada: '',
                 igreja: '',
                 igreja_nome: '',
-                formSubmitted: false,
+                formSubmitted: true,
             }
         },
         methods: {
