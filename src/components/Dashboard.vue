@@ -4,16 +4,13 @@
             <h1>{{title}}</h1>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>Últimos Eventos</h3>
-            </div>
             <div class="panel-body">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <td>Evento</td>
                         <td>Data</td>
-                        <td>Inscritos | Vagas</td>
+                        <td>Inscritos</td>
                         <td>Status</td>
                     </tr>
                     </thead>
@@ -21,8 +18,8 @@
                     <tr v-for="event in events">
                         <td>{{event.name}}</td>
                         <td>{{event.date}}</td>
-                        <td>{{event.inscriptions.length -1}} | {{event.spots}}</td>
-                        <td>{{event.status}}</td>
+                        <td><strong><span class="text-primary"> {{inscriptions.length}} </span></strong></td>
+                        <td><span :class="event.status === 1? 'text-info':'text-danger'">{{event.status === 1? 'Inscrições Abertas':'Fechado'}}</span></td>
                     </tr>
                     </tbody>
                 </table>
@@ -43,19 +40,22 @@
         messagingSenderId: "270519227288"
     };
 
-    let app = Firebase.initializeApp(config);
-    let db = app.database();
+    let dashboardApp = Firebase.initializeApp(config, 'dashboard');
+    let db = dashboardApp.database();
 
-    let eventsRef = db.ref('events');
+    let events = db.ref('events');
+
+    let inscriptions = events.child('/1/inscriptions');
 
     export default {
         name: 'dashboard',
         firebase: {
-            events: eventsRef
+            events: events,
+            inscriptions: inscriptions
         },
         data () {
             return {
-                title: 'Dashboard',
+                title: 'Dashboard de Inscrições',
             }
         }
     }
